@@ -5,6 +5,7 @@ using UnityEngine;
 public class Garbage : MonoBehaviour
 {
     public float rotVelocity = 360.0f; // Degrees per second
+    public float sample;
 
     private float rot = 0.0f;
 

@@ -42,7 +42,7 @@ public class Shovel : MonoBehaviour
     void OnMouseDown(){
         if(MouseIsUnobstructed()){
             transform.position = new Vector3(
-                transform.position.x, transform.position.y, -1
+                transform.position.x, transform.position.y, -5
             );
             hasBeenFound = true;
             transform.localScale = normalScale;

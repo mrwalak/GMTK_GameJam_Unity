@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ticket : MonoBehaviour
 {
-    public Vector2 showTicketPosition = new Vector2(0, -3.55f);
+    public Vector2 showTicketPosition = new Vector3(0, -3.55f, 8);
     public Vector2 showTicketScale = new Vector2(1f, 1f);
     public Vector2 jarTicketPosition = new Vector2(3.113f, -1.598f);
     public Vector2 jarTicketScale = new Vector2(0.054f, 0.054f);
@@ -64,7 +64,7 @@ public class Ticket : MonoBehaviour
     }
 
     public void DiveDone(){
-        // Increment jar counter first
+        Jar.ticketCount++;
         Destroy(gameObject);
     }
 

@@ -48,7 +48,9 @@ public class LightSwitch : MonoBehaviour
     }
 
     void OnMouseDown(){
-        lightsOn = !lightsOn;
-        UpdateAppearance();
+        if(MouseIsUnobstructed()){
+            lightsOn = !lightsOn;
+            UpdateAppearance();
+        } 
     }
 }

@@ -28,4 +28,16 @@ public class LightsManager : MonoBehaviour
             lights[i].enabled = true;
         }
     }
+
+    public void LightsOn(){
+        for(int i = 0; i < CoinGameManager.NUM_COINS; i++){
+            lights[i].enabled = true;
+        }
+    }
+
+    public void LightsOff(){
+        for(int i = 0; i < CoinGameManager.NUM_COINS; i++){
+            lights[i].enabled = false;
+        }
+    }
 }

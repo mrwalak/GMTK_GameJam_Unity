@@ -47,13 +47,14 @@ public class CoinGameManager : MonoBehaviour
     }
 
     public void OnFlipComplete(){
-        Debug.Log("OnFlipComplete");
         if(gameState == CoinGameState.FirstFlip){
+            Debug.Log("Finished first flip");
             RunWithDelay(stageManager.ToTenCoinFlip, 3f);
             RunWithDelay(flipButton.Show, 6f);
             gameState = CoinGameState.SecondFlip;
         }else if(gameState == CoinGameState.SecondFlip){
             Debug.Log("Finished second flip");
+            stageManager.ShowLightSwitch();
         }
         
     }

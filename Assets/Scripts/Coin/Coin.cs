@@ -25,10 +25,13 @@ public class Coin : MonoBehaviour
     private int forcedOutcome = 0;
 
     private Action onFlipComplete;
+    private bool canTamper = false;
+    private bool isHeads = true;
+    private bool isSecondFlip = false;
 
     void Awake(){
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = headsSprite;
+        ChangeToHeads();
         body = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         distToGround = circleCollider.radius + RAYCAST_ERROR;
@@ -39,12 +42,13 @@ public class Coin : MonoBehaviour
     }
 
     // -1 is forced tails, 0 is no forced outcome, 1 is forced heads
-    public void Flip(int forcedOutcome){
+    public void Flip(int forcedOutcome, bool isSecondFlip){
         body.isKinematic = false;
         body.velocity = new Vector2(0, FLIP_VELOCITY + UnityEngine.Random.value * FLIP_RANDOM_DELTA);
         isFlipping = true;
         groundedCount_t = 0;
         this.forcedOutcome = forcedOutcome;
+        this.isSecondFlip = isSecondFlip;
     }
 
     public void Reset(){
@@ -71,6 +75,9 @@ public class Coin : MonoBehaviour
                     if(onFlipComplete != null){
                         onFlipComplete();
                     }
+                    if(isSecondFlip){
+                        canTamper = true;
+                    }
                 }
             }else{
                 groundedCount_t = 0;
@@ -82,11 +89,21 @@ public class Coin : MonoBehaviour
         return Physics2D.Raycast(circleCollider.bounds.center, Vector2.down, distToGround, layerMask);
     }
 
+    void ChangeToHeads(){
+        isHeads = true;
+        spriteRenderer.sprite = headsSprite;
+    }
+
+    void ChangeToTails(){
+        isHeads = false;
+        spriteRenderer.sprite = tailsSprite;
+    }
+
     void ProcessForcedOutcome(){
         if(forcedOutcome == -1){
-            spriteRenderer.sprite = tailsSprite;
+            ChangeToTails();
         }else if(forcedOutcome == 1){
-            spriteRenderer.sprite = headsSprite;
+            ChangeToHeads();
         }else{
             // Do nothing... leave at whatever we are on
         }
@@ -95,9 +112,22 @@ public class Coin : MonoBehaviour
     void RandomSprite(){
         float rand = UnityEngine.Random.value;
         if(rand > 0.5f){
-            spriteRenderer.sprite = headsSprite;
+            ChangeToHeads();
         }else{
-            spriteRenderer.sprite = tailsSprite;
+            ChangeToTails();
         }
     }
+
+    void OnMouseDown(){
+        // You need another case here where you try to tamper but lights are on
+        if(canTamper){
+            if(isHeads){
+                ChangeToTails();
+            }else{
+                ChangeToHeads();
+            }
+        }
+    }
+
+
 }

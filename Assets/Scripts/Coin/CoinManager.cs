@@ -34,11 +34,11 @@ public class CoinManager : MonoBehaviour
         if(flipAll){
             int forcedTails = Random.Range(0, 10);
             for(int i = 0; i < CoinGameManager.NUM_COINS; i++){
-                coins[i].Flip((i == forcedTails) ? -1 : 0);
+                coins[i].Flip((i == forcedTails) ? -1 : 0, true);
             }
         }else{
             coins[0].SetOnFlipComplete(gameManager.OnFlipComplete);
-            coins[0].Flip(1);
+            coins[0].Flip(1, false);
         }
     }
 

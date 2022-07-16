@@ -250,8 +250,8 @@ MonoBehaviour:
   onSprite: {fileID: 21300000, guid: dc71d516148d7304984dab79ba915437, type: 3}
   offSprite: {fileID: 21300000, guid: 7e8e5035cde7c044994731d1ca9f2de0, type: 3}
   lightsManager: {fileID: 522810171}
-  mouseOverScale: {x: 1.1, y: 1.1}
-  normalScale: {x: 1, y: 1}
+  mouseOverScale_1: {x: 0.7, y: 0.7}
+  normalScale_1: {x: 0.6, y: 0.6}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +972,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -44,13 +44,13 @@ public class CoinGameManager : MonoBehaviour
     void Start(){
         LeanTween.alpha(blackFade.GetComponent<RectTransform>(), 0f, 1f);
         audioManager.Play("Opening");
-        StaticData.RunWithDelay(CoinIn, (StaticData.IGNORE_AUDIO ? 1f :52f));
+        StaticData.RunWithDelay(CoinIn, (StaticData.IGNORE_AUDIO ? 1f :54f));
     }
 
     public void CoinIn(){
         stageManager.gameObject.SetActive(true);
         audioManager.Play("Opening_2");
-        StaticData.RunWithDelay(SignIn, (StaticData.IGNORE_AUDIO ? 1f :20f));
+        StaticData.RunWithDelay(SignIn, (StaticData.IGNORE_AUDIO ? 1f :22f));
     }
 
     public void SignIn(){

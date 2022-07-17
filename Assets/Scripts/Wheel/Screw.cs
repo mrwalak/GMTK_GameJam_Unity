@@ -16,7 +16,7 @@ public class Screw : MonoBehaviour
     
     private bool isScrewing = false;
     private float screw_t = 0;
-    private float timeToUnscrew = 1f;
+    private float timeToUnscrew = 0f;//1f;
 
     public Vector2 startPos;
     private Vector2 endPos;
@@ -54,6 +54,15 @@ public class Screw : MonoBehaviour
         spriteRenderer.sprite = unscrewedSprite;
         transform.localScale = popOffScale;
         body.isKinematic = false;
+        StaticData.RunWithDelay(FadeOut, 5f);
+    }
+
+    public void FadeOut(){
+        LeanTween.alpha(gameObject, 0f, 2f).setOnComplete(DestroySelf);
+    }
+
+    public void DestroySelf(){
+        Destroy(gameObject);
     }
 
     void Update(){

@@ -16,8 +16,13 @@ public class FrontPanel : MonoBehaviour
     private BoxCollider2D boxCollider;
     private HingeJoint2D hinge;
 
+    public WireToggle toggleA;
+    public WireToggle toggleB;
+
     private bool isSwinging = false;
     private bool isDropped = false;
+
+    // public GameObject wireSubs;
 
     void Awake(){
         body = GetComponent<Rigidbody2D>();
@@ -50,6 +55,20 @@ public class FrontPanel : MonoBehaviour
             hinge.enabled = false;
             boxCollider.enabled = true;
             isDropped = true;
+            StaticData.RunWithDelay(FadeOut, 5f);
+            toggleA.canCheat = true;
+            toggleB.canCheat = true;
+
+            WheelGameManager m = (WheelGameManager)FindObjectOfType(typeof(WheelGameManager));
+            m.PanelExposed();
         }
+    }
+
+    public void FadeOut(){
+        LeanTween.alpha(gameObject, 0f, 2f).setOnComplete(DestroySelf);
+    }
+
+    public void DestroySelf(){
+        Destroy(gameObject);
     }
 }

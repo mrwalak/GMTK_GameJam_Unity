@@ -6,12 +6,16 @@ public class SpinWheel : MonoBehaviour
 {
     public GameObject wheelPinPrefab;
 
+
     private float radius = 3.30f; // Kind of bad practice, but whatever, its a game jam
     private const int NUM_PINS = 50;
     private const float STROKE_OFFSET = 0.1f;
+    private Rigidbody2D body;
+
+    private bool isSpinning = false;
 
     void Awake(){
-
+        body = GetComponent<Rigidbody2D>();
     }
 
     void Start(){
@@ -29,12 +33,24 @@ public class SpinWheel : MonoBehaviour
             }else{
                 pin.transform.localPosition = position;
             }
-            
-            
-            
         }
     }
 
+    void Update(){
+        if(isSpinning){
+            if(body.angularVelocity >= -2){
+                body.angularVelocity = 0;
+                isSpinning = false;
+                WheelGameManager m = (WheelGameManager)FindObjectOfType(typeof(WheelGameManager));
+                m.SpinResults();
+            }
+        }
+    }
+
+    public void Spin(){
+        body.angularVelocity = -360f;
+        isSpinning = true;
+    }
 
     // (-0.1341, 3.3078) 13
     // (0.0765, 3.3104) 12

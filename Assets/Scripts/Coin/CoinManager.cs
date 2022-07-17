@@ -48,4 +48,12 @@ public class CoinManager : MonoBehaviour
             coins[i].gameObject.SetActive(true);
         }
     }
+
+    public bool AllCoinsAreHeads(){
+        bool allHeads = true;
+        for(int i = 0; i < coins.Length; i++){
+            allHeads = allHeads && (coins[i].isHeads);
+        }
+        return allHeads;
+    }
 }

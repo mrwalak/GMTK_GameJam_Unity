@@ -26,7 +26,7 @@ public class Coin : MonoBehaviour
 
     private Action onFlipComplete;
     private bool canTamper = false;
-    private bool isHeads = true;
+    public bool isHeads = true;
     private bool isSecondFlip = false;
 
     void Awake(){
@@ -128,6 +128,8 @@ public class Coin : MonoBehaviour
             }
         }
     }
+
+    
 
 
 }

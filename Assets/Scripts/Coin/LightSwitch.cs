@@ -49,8 +49,21 @@ public class LightSwitch : MonoBehaviour
 
     void OnMouseDown(){
         if(MouseIsUnobstructed()){
-            lightsOn = !lightsOn;
-            UpdateAppearance();
+            if(!lightsOn){
+                CoinManager c = (CoinManager)FindObjectOfType(typeof(CoinManager));
+                if(c.AllCoinsAreHeads()){
+                    lightsOn = true;
+                    UpdateAppearance();
+                    CoinGameManager m = (CoinGameManager)FindObjectOfType(typeof(CoinGameManager));
+                    m.DoneCheating();
+                }
+            }else{
+                lightsOn = !lightsOn;
+                CoinGameManager m = (CoinGameManager)FindObjectOfType(typeof(CoinGameManager));
+                m.CancelDeath();
+                m.BeginCheat();
+                UpdateAppearance();
+            }
         } 
     }
 }

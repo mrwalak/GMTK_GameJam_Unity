@@ -13,6 +13,7 @@ public class Hole : MonoBehaviour
     public SpriteRenderer goldRenderer;
 
     private int holeProgression_i = 0;
+    private bool goldTaken = false;
 
     private RaffleGameManager gameManager;
 
@@ -23,6 +24,11 @@ public class Hole : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "ShovelHead"){
+            Vector2 v = other.gameObject.transform.parent.GetComponent<Rigidbody2D>().velocity;
+            if(v.magnitude < 4f){
+                return;
+            }
+            
             if(holeProgression_i < (crackProgression.Length - 1)){
                 holeProgression_i++;
                 UpdateAppearance();
@@ -39,9 +45,14 @@ public class Hole : MonoBehaviour
     }
 
     void OnMouseDown(){
+        if(goldTaken){
+            return;
+        }
+
         if(holeProgression_i == (crackProgression.Length - 1)){
             goldRenderer.sprite = null;
             gameManager.AquireGold();
+            goldTaken = true;
         }
     }
 }

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
-    guid: f3d42cf047c98ec43b62709eb781a1a0
+    path: Assets/Scenes/TermsAndConditions.unity
+    guid: e1173d47e2ae43248a953b351e7dad87
   - enabled: 1
     path: Assets/Scenes/Coin.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Raffle.unity
     guid: df2de4a456886f74188bfd24174c9b28
   - enabled: 1
-    path: Assets/Scenes/TermsAndConditions.unity
-    guid: e1173d47e2ae43248a953b351e7dad87
-  - enabled: 1
     path: Assets/Scenes/Wheel.unity
     guid: c6bfc6c8c74a0604f8d8d1c463dcf007
+  - enabled: 1
+    path: Assets/Scenes/ToBeContinued.unity
+    guid: 434e098008d3a8d4a805fddf1bd90244
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: f3d42cf047c98ec43b62709eb781a1a0
   m_configObjects: {}

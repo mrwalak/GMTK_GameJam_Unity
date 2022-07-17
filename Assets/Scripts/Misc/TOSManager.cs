@@ -18,6 +18,11 @@ public class TOSManager : MonoBehaviour
     public void AgreeClicked(){
         emptyBox.SetActive(false);
         checkedBox.SetActive(true);
+        checkedBox.transform.position = new Vector3(
+            checkedBox.transform.position.x,
+            checkedBox.transform.position.y,
+            -5f
+        );
         StaticData.RunWithDelay(ToCoins, 2f);
     }
 
